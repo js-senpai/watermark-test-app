@@ -6,14 +6,14 @@ export default class getWaterMarkImages extends ColorChecker{
         super(imageFolder,waterMarkFolder);
     }
     /* Get images */
-    getImagesWithWatermark = async () =>{
+    getImagesWithWatermark = async (): Promise<any> =>{
         return await new Promise((resolve) =>{
             resolve(this.imagesWithWaterMark);
         } )
     };
     /* Set watermarks links for every image */
     analyzeImages = async () =>{
-        return await this.checkColor().then((images)=>{
+        return await this.checkColor().then((images): any =>{
            const currentImages  = images;
            for(let i = 0;i<currentImages.images.length;i++){
                if(currentImages.images[i].colorImg === 'red') {
@@ -28,8 +28,8 @@ export default class getWaterMarkImages extends ColorChecker{
         });
     };
     /* Set watermark */
-    setWatermark = () =>{
-        this.imagesWithWaterMark = this.analyzeImages().then((currentImages)=>{
+    setWatermark = (): void =>{
+        this.imagesWithWaterMark = this.analyzeImages().then((currentImages): any =>{
             for(let i = 0; i<currentImages.images.length;i++){
                 this.putNewImages(currentImages.images[i].oldImg,currentImages.images[i].watermark).then((image)=>{
                     image.write(currentImages.images[i].oldImg.replace('currentImg','newImages'));
@@ -42,7 +42,7 @@ export default class getWaterMarkImages extends ColorChecker{
         });
     };
     /* Put images to folder */
-    putNewImages = async (img: string,watermark: string) =>{
+    putNewImages = async (img: string,watermark: string): Promise<any> =>{
         const [image, logo] = await Promise.all([
             Jimp.read(img),
             Jimp.read(watermark)

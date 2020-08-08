@@ -9,13 +9,13 @@ export default class ImageChecker{
         this._waterMarkFolder = waterMarkFolder;
     }
     /* Get new array of images */
-    getImages = async ():Promise<{ images: any; watermarks: any }> =>{
+    getImages = async (): Promise<any> =>{
         return await this.putImagesToArray().then((imgArray)=>{
             return imgArray;
         });
     };
     /* Put images to new array */
-    putImagesToArray = async () =>{
+    putImagesToArray = async (): Promise<any> =>{
         this._currentImages = await this.getFolder(this._imageFolder,true).then(data=>data);
         this._waterMarkImages = await this.getFolder(this._waterMarkFolder,false).then(data=>data);
         return {
@@ -24,7 +24,7 @@ export default class ImageChecker{
         };
     };
     /* Get folder of images */
-    getFolder = async (folder: string,isCurrentImgs: boolean) =>{
+    getFolder = async (folder: string,isCurrentImgs: boolean): Promise<any> =>{
         const checkTypeImages = /\.(jpg|png|jpeg)/;
         const filesArray: any[] = [];
         return await new Promise((resolve,reject)=>{

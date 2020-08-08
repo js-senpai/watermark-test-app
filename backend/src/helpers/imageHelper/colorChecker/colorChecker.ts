@@ -5,7 +5,7 @@ export default class ColorChecker extends ImageChecker{
         super(imageFolder,waterMarkFolder);
     }
     /* Check color of images */
-    checkColor = async () => {
+    checkColor = async (): Promise<any> => {
         return await this.getImages().then(async (imagesArray): Promise<any> =>{
             const newImages = imagesArray;
                 for(let count = 0;count<newImages.images.length;count++){
