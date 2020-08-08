@@ -1,0 +1,25 @@
+/* Home component styles */
+.home-title
+  text-align: center
+  margin: 20px 0
+.home-gallery
+  list-style-type: none
+  grid-template-columns: repeat(3,1fr)
+  grid-template-rows: auto
+  grid-gap: 20px
+.home-gallery-item
+  img
+    width: 100%
+.home-gallery-img-title
+  text-align: center
+  margin: 20px auto
+.home-gallery-img-color
+  display: block
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  margin: 0 auto
+@media screen and (max-width: 990px)
+  .home-gallery
+    grid-template-columns: 1fr
+    justify-content: center
